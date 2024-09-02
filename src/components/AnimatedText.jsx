@@ -13,10 +13,10 @@ const AnimatedText = ({ text, buttonLabel }) => {
       {/* 3D Text */}
       <Text
         fontSize={0.5}
-        color="#ffffff"
+        color="#CDC2A5"
         anchorX="center"
         anchorY="middle"
-        position={[0, 0, 0]}
+        position={[-1.6, 0.45, -1.145]}
         smooth={1}
         letterSpacing={-0.025}
       >
@@ -24,21 +24,10 @@ const AnimatedText = ({ text, buttonLabel }) => {
       </Text>
 
       {/* Button below the text */}
-      <ThreeDInputComponent position={[0, -0.6, 0]} onSubmit={handleSubmit} />
-
-      {/* <mesh position={[0, -0.6, 0]}>
-        <boxGeometry args={[1, 0.4, 0.1]} />
-        <meshStandardMaterial color="#007bff" />
-        <Text
-          fontSize={0.2}
-          color="#ffffff"
-          anchorX="center"
-          anchorY="middle"
-          position={[0, 0, 0.06]}
-        >
-          {buttonLabel}
-        </Text>
-      </mesh> */}
+      <ThreeDInputComponent
+        position={[0, 0.45, -1.5]}
+        onSubmit={handleSubmit}
+      />
     </group>
   );
 };

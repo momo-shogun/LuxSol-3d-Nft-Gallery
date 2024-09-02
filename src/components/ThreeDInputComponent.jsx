@@ -5,12 +5,13 @@ import * as THREE from "three";
 
 const ThreeDInputComponent = ({ position, onSubmit }) => {
   const inputMeshRef = useRef();
-  const submitMeshRef = useRef();
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(
+    "EV3pbMjq1bGN83Cjmw8uGpJQPfZtSZTphti6NNLNDkzo",
+  );
   const [hovered, setHovered] = useState(false);
 
   const handleInputClick = () => {
-    const newValue = prompt("Enter text:");
+    const newValue = prompt("Enter wallet Adress");
     if (newValue !== null) {
       setInputValue(newValue);
     }
@@ -20,10 +21,6 @@ const ThreeDInputComponent = ({ position, onSubmit }) => {
     onSubmit(inputValue);
     setInputValue("");
   };
-
-  useFrame(() => {
-    // You can add animations or other frame-based logic here
-  });
 
   return (
     <>
@@ -38,34 +35,13 @@ const ThreeDInputComponent = ({ position, onSubmit }) => {
         <boxGeometry args={[1.5, 0.5, 0.1]} />
         <meshStandardMaterial color={hovered ? "yellow" : "lightgrey"} />
         <Text
-          fontSize={0.2}
+          fontSize={0.053}
           color="#000000"
           anchorX="center"
           anchorY="middle"
           position={[0, 0, 0.06]}
         >
           {inputValue || "Add Wallet"}
-        </Text>
-      </mesh>
-
-      {/* 3D Submit Button */}
-      <mesh
-        ref={submitMeshRef}
-        position={[position[0], position[1] - 1, position[2]]}
-        onClick={handleSubmitClick}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
-      >
-        <boxGeometry args={[1, 0.5, 0.1]} />
-        <meshStandardMaterial color={hovered ? "orange" : "blue"} />
-        <Text
-          fontSize={0.2}
-          color="#ffffff"
-          anchorX="center"
-          anchorY="middle"
-          position={[0, 0, 0.06]}
-        >
-          Submit
         </Text>
       </mesh>
     </>

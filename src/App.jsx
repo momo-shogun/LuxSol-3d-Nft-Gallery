@@ -1,6 +1,6 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import InteractiveCube from "./components/InteractiveCube";
 import * as THREE from "three";
 import { extend } from "@react-three/fiber";
@@ -11,6 +11,7 @@ import image2 from "./assets/image3.png";
 import Window from "./components/Window";
 import Wall from "./components/Wall";
 import AnimatedText from "./components/AnimatedText";
+import { useState, useEffect } from "react";
 // Ensure this path is correct
 // import photo from "./assets/photo.png"; // Comment this line if not used
 
@@ -21,6 +22,18 @@ extend({
 });
 
 function App() {
+  /* const [nfts, setNfts] = useState([]);
+  const walletAddress = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"; // Replace with the desired wallet address
+
+  useEffect(() => {
+    const loadNFTs = async () => {
+      const nftData = await fetchNFTs(walletAddress);
+      setNfts(nftData);
+    };
+
+    loadNFTs();
+  }, []); */
+
   return (
     <div className="w-full h-screen bg-black">
       <Canvas
@@ -34,14 +47,6 @@ function App() {
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <pointLight position={[-10, -10, -10]} intensity={1} />
 
-        <Stars
-          radius={100} // Radius of the inner sphere where stars are visible
-          depth={50} // Depth of area where stars are scattered
-          count={5000} // Number of stars
-          factor={4} // Star size factor
-          saturation={0} // Color saturation
-          fade // Fading effect
-        />
         {/* Floor */}
         <mesh
           receiveShadow

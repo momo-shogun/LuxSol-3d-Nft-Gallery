@@ -1,32 +1,61 @@
-import React, { useState } from 'react';
-import { useSpring, animated } from '@react-spring/three';
-import * as THREE from 'three';
-import { extend } from '@react-three/fiber';
+import React, { useState } from "react";
+import { useSpring, animated } from "@react-spring/three";
+import * as THREE from "three";
+import { extend } from "@react-three/fiber";
 
-// Extend the BoxBufferGeometry
+// Extend BoxGeometry for the table parts
 extend({ BoxBufferGeometry: THREE.BoxGeometry });
 
-const InteractiveCube = ({ position }) => {
+const InteractiveTable = ({ position }) => {
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
 
   const { scale } = useSpring({
-    scale: clicked ? 1.5 : 1,
+    scale: clicked ? 1.1 : 1,
     config: { tension: 170, friction: 12 },
   });
 
+  // Table dimensions
+  const tableTop = [3, 0.2, 2]; // Length, Height, Width
+  const legHeight = 1.5;
+  const legSize = [0.2, legHeight, 0.2]; // Thickness, Height, Thickness
+
   return (
-    <animated.mesh
+    <animated.group
       position={position}
       scale={scale}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
       onClick={() => setClicked(!clicked)}
     >
-      <boxBufferGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-    </animated.mesh>
+      {/* Table Top */}
+      <animated.mesh position={[0, legHeight / 15, 0]}>
+        <boxBufferGeometry args={tableTop} />
+        <meshStandardMaterial />
+      </animated.mesh>
+
+      {/* Table Legs */}
+      <animated.mesh position={[-1.4, -legHeight / 2, -0.9]}>
+        <boxBufferGeometry args={legSize} />
+        <meshStandardMaterial color={"orange"} />
+      </animated.mesh>
+
+      <animated.mesh position={[1.4, -legHeight / 2, -0.9]}>
+        <boxBufferGeometry args={legSize} />
+        <meshStandardMaterial color={"orange"} />
+      </animated.mesh>
+
+      <animated.mesh position={[-1.4, -legHeight / 2, 0.9]}>
+        <boxBufferGeometry args={legSize} />
+        <meshStandardMaterial color={"orange"} />
+      </animated.mesh>
+
+      <animated.mesh position={[1.4, -legHeight / 2, 0.9]}>
+        <boxBufferGeometry args={legSize} />
+        <meshStandardMaterial color={"orange"} />
+      </animated.mesh>
+    </animated.group>
   );
 };
 
-export default InteractiveCube;
+export default InteractiveTable;
