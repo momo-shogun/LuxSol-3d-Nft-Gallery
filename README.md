@@ -1,8 +1,4 @@
-# React + Vite
+LuxSol - 3d nft gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- working on feature which allow the webstie to fetch the meta data for all the nft of the user from the solana main net direclty 
+- working on ui as i am just stareted learning three js just weeks back.
