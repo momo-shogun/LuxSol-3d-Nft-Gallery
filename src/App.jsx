@@ -38,7 +38,7 @@ function App() {
     <div className="w-full h-screen bg-black">
       <Canvas
         camera={{
-          position: [0, 0, 5],
+          position: [5, 2, 5],
           fov: 75,
           aspect: window.innerWidth / window.innerHeight,
         }}
